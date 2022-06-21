@@ -2,3 +2,10 @@
 .venv
 #enviroment variables
 .env
+#dev migrations
+**/migrations/**
+!**/migrations/__init__.py
+#python cache
+**/__pycache__
+#development files
+data

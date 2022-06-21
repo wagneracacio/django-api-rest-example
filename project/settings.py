@@ -1,7 +1,12 @@
-from pathlib import Path
+from sys import path as sys_path
+from os import path as os_path
 from decouple import config
+from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+PROJECT_ROOT = os_path.dirname(__file__)
+sys_path.insert(0, os_path.join(PROJECT_ROOT, 'apps'))
 
 SECRET_KEY = config('DJANGO_SECRET_KEY')
 
@@ -10,6 +15,8 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
+    'escola',
+    'aluno',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -51,7 +58,7 @@ WSGI_APPLICATION = 'project.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': BASE_DIR / '/data/db/db.sqlite3',
     }
 }
 
